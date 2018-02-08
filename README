@@ -1,0 +1,30 @@
+# Tests
+cd test
+./../vendor/bin/phpunit --bootstrap="bootstrap.php" ./
+
+
+# PHP version
+
+I got Ubuntu 15.04 on my home computer and installing php7 turned out to be non-trivial task :) So I ended up with php 5.6.
+
+
+# Validation
+
+I follow the approach of context validation. Hence it resides in commands, not entities. Plus with this approach it's way easier to map errors to UI -- and with no exceptions thrown.
+
+
+# Use cases
+
+Use cases in `common` directory is an example of composability of UseCase interface.
+
+
+# Request
+
+`FromJson` class is an example of reusable Request abstraction.
+
+
+# The reasoning behind an Investment aggregate
+
+The first thought on how to calculate an investor's interest is to keep Investments value objects inside Investor. The problems will arise if there is a huge amount of them: how to instantiate an Investor object? How to calculate an interest for several years? What if a corresponding tranche's rate changes? What if an investment's behavior might vary in this case: say, some investment's rate still stays the same, some investments's rate changes as well, but from the point when the corresponding tranche's rate has changed, and some investments's rate changes from this investment creation date? In other words it seems that a standalone Investment aggregate is a reasonable choice, with its own calculating strategies and probably a separate read-model repository where complex calculations can be implemented.
+
+And this works well with saga pattern that can be applied if (when?) your system's data will explode, so that you will have to split it somehow between different physical storages. Then you no longer can rely on transactions (I imply that 2pc transactions is not an option). That's how it could work. Once new Investment accepted, an event of the same name is published. It's consumed by an Investor aggregate. Its wallet amount is checked, and if its ok, it is decreased and "investment amount withdrawn from the wallet" event is published. It is consumed by a Tranche aggregate, that checks its maximum available amount. If it is not reached, "Money transferred to tranche" event is published, which is consumed by an Investment aggregate. Then the notification letter could be sent to an investor. Thus, the whole system becomes eventually consistent and nearly-infinite-scalable with the Saga pattern.
