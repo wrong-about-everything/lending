@@ -4,8 +4,12 @@ namespace src\domain\investor;
 
 use src\domain\investment\Investment;
 use src\domain\money\calculation\Difference;
+use src\domain\money\calculation\Sum;
+use src\domain\money\currency\Pound;
+use src\domain\money\format\InMinorUnits;
 use src\domain\money\Money;
 use \Exception;
+use \DateTime;
 
 class DefaultInvestor implements Investor
 {
@@ -46,6 +50,11 @@ class DefaultInvestor implements Investor
         return $this->walletAmount;
     }
 
+    public function investments()
+    {
+        return $this->investments;
+    }
+
     public function hasEnoughMoney(Money $money)
     {
         return $money->isLessOrEqual($this->walletAmount);
@@ -66,5 +75,26 @@ class DefaultInvestor implements Investor
 
         $this->walletAmount = new Difference($this->walletAmount, $investment->amount());
         $this->investments[] = $investment;
+    }
+
+    public function calculate(DateTime $start, DateTime $finish)
+    {
+        return
+            array_reduce(
+                array_filter(
+                    $this->investments,
+                    function (Investment $investment) use ($finish) {
+                        return $investment->isBefore($finish);
+                    }
+                ),
+                function (Money $total, Investment $current) use ($start, $finish) {
+                    return
+                        new Sum(
+                            $total,
+                            $current->calculateFor($start, $finish)
+                        );
+                },
+                new InMinorUnits(0, new Pound())
+            );
     }
 }

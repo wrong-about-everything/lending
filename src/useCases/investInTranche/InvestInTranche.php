@@ -30,11 +30,6 @@ class InvestInTranche implements UseCase
     private $investorRepository;
 
     /**
-     * @var InvestmentRepository
-     */
-    private $investmentRepository;
-
-    /**
      * @var DateTime
      */
     private $currentDateTime;
@@ -43,14 +38,12 @@ class InvestInTranche implements UseCase
         LoanRepository $loanRepository,
         TrancheRepository $trancheRepository,
         InvestorRepository $investorRepository,
-        InvestmentRepository $investmentRepository,
         DateTime $currentDateTime
     )
     {
         $this->loanRepository = $loanRepository;
         $this->trancheRepository = $trancheRepository;
         $this->investorRepository = $investorRepository;
-        $this->investmentRepository = $investmentRepository;
         $this->currentDateTime = $currentDateTime;
     }
 
@@ -71,22 +64,9 @@ class InvestInTranche implements UseCase
             return $validationResult->errors();
         }
 
-        $this->investmentRepository
-            ->add(
-                new FixedInterestPercentageInvestment(
-                    $this->investmentRepository->generateId(),
-                    $validationResult->investor()->id(),
-                    $this->currentDateTime,
-                    $validationResult->tranche()->percentage(),
-                    $validationResult->moneyToInvest()
-                )
-            )
-        ;
-
         $validationResult->investor()
             ->invest(
                 new FixedInterestPercentageInvestment(
-                    $this->investmentRepository->generateId(),
                     $validationResult->investor()->id(),
                     $this->currentDateTime,
                     $validationResult->tranche()->percentage(),

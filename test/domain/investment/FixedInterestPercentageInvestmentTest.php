@@ -5,7 +5,6 @@ namespace test\domain\investment;
 use PHPUnit\Framework\TestCase;
 use \DateTime;
 use \src\domain\investment\FixedInterestPercentageInvestment;
-use \src\domain\investment\InvestmentId;
 use \src\domain\investor\InvestorId;
 use \src\domain\money\currency\Pound;
 use src\domain\money\format\InMinorUnits;
@@ -31,7 +30,6 @@ class FixedInterestPercentageInvestmentTest extends TestCase
         $this->assertEquals(
             $expectedInterest->amount(),
             (new FixedInterestPercentageInvestment(
-                new InvestmentId(1),
                 new InvestorId(1),
                 $investmentMadeAt,
                 $rate,
@@ -89,7 +87,6 @@ class FixedInterestPercentageInvestmentTest extends TestCase
         $this->assertEquals(
             $expectedInterest->amount(),
             (new FixedInterestPercentageInvestment(
-                new InvestmentId(1),
                 new InvestorId(1),
                 $investmentMadeAt,
                 $rate,

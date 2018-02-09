@@ -9,11 +9,6 @@ use \DateTime;
 interface Investment
 {
     /**
-     * @return InvestmentId
-     */
-    public function id();
-
-    /**
      * @return Money
      */
     public function amount();

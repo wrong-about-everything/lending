@@ -4,9 +4,7 @@ namespace test\useCases\investInTranche;
 
 use \PHPUnit\Framework\TestCase;
 use \DateTime;
-use src\domain\investment\InvestmentRepository;
 use src\domain\percentage\format\DefaultPercent;
-use src\infrastructure\investment\InMemoryInvestmentRepository;
 use \src\useCases\investInTranche\InvestInTranche;
 use \src\useCases\investInTranche\request\FromArray;
 use \src\infrastructure\loan\InMemoryLoanRepository;
@@ -32,11 +30,10 @@ class FailedInvestInTrancheTest extends TestCase
         $loanRepository = $this->filledLoanRepository();
         $trancheRepository = $this->filledTrancheRepository();
         $investorRepository = $this->filledInvestorRepository();
-        $investmentRepository = $this->emptyInvestmentRepository();
 
-        $response = $this->investInTranche($loanRepository, $trancheRepository, $investorRepository, $investmentRepository);
+        $response = $this->investInTranche($loanRepository, $trancheRepository, $investorRepository);
 
-        $this->assertNoInvestmentsMade($investmentRepository);
+        $this->assertNoInvestmentsMade($investorRepository);
         $this->assertNothingTransferredInTranche($trancheRepository);
         $this->assertInvestorsWalletAmountIsTheSame($investorRepository);
         $this->assertResponseCode($response);
@@ -93,16 +90,10 @@ class FailedInvestInTrancheTest extends TestCase
         return $investorRepository;
     }
 
-    private function emptyInvestmentRepository()
-    {
-        return new InMemoryInvestmentRepository();
-    }
-
     private function investInTranche(
         LoanRepository $loanRepository,
         TrancheRepository $trancheRepository,
-        InvestorRepository $investorRepository,
-        InvestmentRepository $investmentRepository
+        InvestorRepository $investorRepository
     )
     {
         return
@@ -110,7 +101,6 @@ class FailedInvestInTrancheTest extends TestCase
                 $loanRepository,
                 $trancheRepository,
                 $investorRepository,
-                $investmentRepository,
                 new DateTime('2015-12-03')
             ))
                 ->act(
@@ -124,9 +114,19 @@ class FailedInvestInTrancheTest extends TestCase
                 );
     }
 
-    private function assertNoInvestmentsMade(InvestmentRepository $investmentRepository)
+    private function assertNoInvestmentsMade(InvestorRepository $investorRepository)
     {
-        $this->assertEquals(0, count($investmentRepository->all()));
+        $this->assertEquals(
+            new InMinorUnits(0, new Pound()),
+            $investorRepository
+                ->byId(
+                    new InvestorId($this->investorId())
+                )
+                    ->calculate(
+                        new DateTime('2000-10-01'),
+                        new DateTime('now')
+                    )
+        );
     }
 
     private function assertNothingTransferredInTranche(TrancheRepository $trancheRepository)

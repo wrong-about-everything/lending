@@ -12,11 +12,6 @@ use \Exception;
 class FixedInterestPercentageInvestment implements Investment
 {
     /**
-     * @var InvestmentId
-     */
-    private $id;
-
-    /**
      * @var InvestorId
      */
     private $investorId;
@@ -37,14 +32,12 @@ class FixedInterestPercentageInvestment implements Investment
     private $amount;
 
     public function __construct(
-        InvestmentId $investmentId,
         InvestorId $investorId,
         DateTime $madeAt,
         Percentage $rate,
         Money $amount
     )
     {
-        $this->id = $investmentId;
         $this->investorId = $investorId;
         $this->madeAt = $madeAt;
         $this->rate = $rate;

@@ -14,10 +14,4 @@ interface InvestorRepository
     public function byId(InvestorId $investorId);
 
     public function add(Investor $investor);
-
-    /**
-     * @param InvestorId $investor
-     * @return Money
-     */
-    public function calculate(InvestorId $investorId, DateTime $start, DateTime $finish);
 }

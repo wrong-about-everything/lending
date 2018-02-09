@@ -5,6 +5,7 @@ namespace src\domain\investor;
 use \Exception;
 use src\domain\investment\Investment;
 use src\domain\money\Money;
+use \DateTime;
 
 class NonExistentInvestor implements Investor
 {
@@ -29,6 +30,11 @@ class NonExistentInvestor implements Investor
     }
 
     public function invest(Investment $investment)
+    {
+        throw new Exception('The investor you are operating upon does not exist.');
+    }
+
+    public function calculate(DateTime $start, DateTime $finish)
     {
         throw new Exception('The investor you are operating upon does not exist.');
     }

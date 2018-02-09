@@ -95,11 +95,6 @@ class SuccessfulInvestInTrancheTest extends TestCase
         return $investorRepository;
     }
 
-    private function emptyInvestmentRepository()
-    {
-        return new InMemoryInvestmentRepository();
-    }
-
     private function investInTranche(
         LoanRepository $loanRepository,
         TrancheRepository $trancheRepository,
@@ -150,12 +145,15 @@ class SuccessfulInvestInTrancheTest extends TestCase
     {
         $this->assertEquals(
             2806,
-            $investorRepository->calculate(
-                new InvestorId($this->investorId()),
-                new DateTime('2015-10-01'),
-                new DateTime('2015-10-31')
-            )
-                ->amount()
+            $investorRepository
+                ->byId(
+                    new InvestorId($this->investorId())
+                )
+                    ->calculate(
+                        new DateTime('2015-10-01'),
+                        new DateTime('2015-10-31')
+                    )
+                        ->amount()
         );
     }
 

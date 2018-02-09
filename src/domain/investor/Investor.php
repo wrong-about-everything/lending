@@ -5,6 +5,7 @@ namespace src\domain\investor;
 use src\domain\investment\Investment;
 use src\domain\money\Money;
 use \Exception;
+use \DateTime;
 
 interface Investor
 {
@@ -42,4 +43,9 @@ interface Investor
      * @throws Exception
      */
     public function invest(Investment $investment);
+
+    /**
+     * @return Money
+     */
+    public function calculate(DateTime $start, DateTime $finish);
 }
