@@ -11,12 +11,11 @@ use src\infrastructure\application\investor\InMemoryInvestorRepository;
 use \src\useCases\investInTranche\request\FromJson;
 use \src\useCases\investInTranche\request\ToXml;
 
-
 (new WebFront(
     new Fallback(
         new RouteChain(
             [
-                new Route(
+                new \src\infrastructure\framework\routing\Route(
                     new WithPlaceholders('/investors/:id/invest'),
                     new Post(),
                     new ToXml(
