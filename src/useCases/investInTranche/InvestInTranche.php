@@ -3,12 +3,10 @@
 namespace src\useCases\investInTranche;
 
 use src\domain\investment\FixedInterestPercentageInvestment;
-use src\domain\investment\InvestmentRepository;
 use src\domain\investor\InvestorRepository;
 use src\domain\loan\LoanRepository;
 use src\domain\tranche\TrancheRepository;
 use src\useCases\investInTranche\command\ValidatedInvestInTrancheCommand;
-use src\useCases\Request;
 use src\useCases\UseCase;
 use \DateTime;
 
@@ -47,11 +45,11 @@ class InvestInTranche implements UseCase
         $this->currentDateTime = $currentDateTime;
     }
 
-    public function act(Request $request)
+    public function act(array $data)
     {
         $validationResult =
             (new ValidatedInvestInTrancheCommand(
-                $request,
+                $data,
                 $this->loanRepository,
                 $this->trancheRepository,
                 $this->investorRepository,

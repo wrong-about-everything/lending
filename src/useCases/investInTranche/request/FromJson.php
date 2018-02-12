@@ -3,22 +3,34 @@
 namespace src\useCases\investInTranche\request;
 
 use src\useCases\Request;
+use src\useCases\UseCase;
 
-class FromJson implements Request
+class FromJson implements Action
 {
-    private $jsonString;
+    /**
+     * @var UseCase
+     */
+    private $origin;
 
-    public function __construct($jsonString)
+    public function __construct(UseCase $origin)
     {
-        $this->jsonString = $jsonString;
+        $this->origin = $origin;
     }
 
-    public function data()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function act(Request $request)
     {
-        if (is_null($data = json_decode($this->jsonString, true))) {
-            return [];
-        }
-
-        return $data;
+        return
+            WithBodyAsArray(
+                $this->origin
+                    ->act(
+                        is_null($data = json_decode($request->body(), true))
+                            ? []
+                            : $data
+                    )
+            );
     }
 }

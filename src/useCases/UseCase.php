@@ -7,9 +7,10 @@ use \Exception;
 interface UseCase
 {
     /**
+     * @param $data array
      * @return array
      *
      * @throws Exception
      */
-    public function act(Request $request);
+    public function act(array $data);
 }

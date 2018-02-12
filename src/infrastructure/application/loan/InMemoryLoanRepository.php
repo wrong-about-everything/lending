@@ -1,6 +1,6 @@
 <?php
 
-namespace src\infrastructure\loan;
+namespace src\infrastructure\application\loan;
 
 use src\domain\loan\Loan;
 use src\domain\loan\LoanId;

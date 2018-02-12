@@ -5,7 +5,22 @@ namespace src\useCases;
 interface Request
 {
     /**
-     * @return array
+     * @return Method
      */
-    public function data();
+    public function method();
+
+    /**
+     * @return Uri
+     */
+    public function uri();
+
+    /**
+     * @return string[]
+     */
+    public function headers();
+
+    /**
+     * @return string
+     */
+    public function body();
 }

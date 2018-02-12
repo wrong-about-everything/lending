@@ -4,14 +4,11 @@ namespace test\useCases\investInTranche;
 
 use \PHPUnit\Framework\TestCase;
 use \DateTime;
-use src\domain\investment\InvestmentRepository;
 use src\domain\percentage\format\DefaultPercent;
-use \src\infrastructure\investment\InMemoryInvestmentRepository;
 use \src\useCases\investInTranche\InvestInTranche;
-use \src\useCases\investInTranche\request\FromArray;
-use \src\infrastructure\loan\InMemoryLoanRepository;
-use \src\infrastructure\tranche\InMemoryTrancheRepository;
-use \src\infrastructure\investor\InMemoryInvestorRepository;
+use src\infrastructure\application\loan\InMemoryLoanRepository;
+use src\infrastructure\application\tranche\InMemoryTrancheRepository;
+use src\infrastructure\application\investor\InMemoryInvestorRepository;
 use \src\domain\tranche\DefaultTranche;
 use \src\domain\tranche\TrancheId;
 use \src\domain\loan\LoanId;
@@ -108,15 +105,11 @@ class SuccessfulInvestInTrancheTest extends TestCase
                 $investorRepository,
                 new DateTime('2015-10-03')
             ))
-                ->act(
-                    new FromArray(
-                        [
-                            'amount' => $this->amountToBeInvested(),
-                            'tranche_id' => $this->trancheId(),
-                            'investor_id' => $this->investorId(),
-                        ]
-                    )
-                )
+                ->act([
+                    'amount' => $this->amountToBeInvested(),
+                    'tranche_id' => $this->trancheId(),
+                    'investor_id' => $this->investorId(),
+                ])
             ;
     }
 

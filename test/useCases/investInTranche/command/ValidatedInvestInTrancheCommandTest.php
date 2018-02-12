@@ -13,11 +13,10 @@ use src\domain\money\format\InMinorUnits;
 use src\domain\percentage\format\DefaultPercent;
 use src\domain\tranche\DefaultTranche;
 use src\domain\tranche\TrancheId;
-use src\infrastructure\investor\InMemoryInvestorRepository;
-use src\infrastructure\loan\InMemoryLoanRepository;
-use src\infrastructure\tranche\InMemoryTrancheRepository;
+use src\infrastructure\application\investor\InMemoryInvestorRepository;
+use src\infrastructure\application\loan\InMemoryLoanRepository;
+use src\infrastructure\application\tranche\InMemoryTrancheRepository;
 use src\useCases\investInTranche\command\ValidatedInvestInTrancheCommand;
-use src\useCases\investInTranche\request\FromArray;
 use \DateTime;
 
 class ValidatedInvestInTrancheCommandTest extends TestCase
@@ -26,11 +25,11 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([
+                [
                     'tranche_id' => 1,
                     'investor_id' => 1,
                     'amount' => 12,
-                ]),
+                ],
                 $this->filledLoanRepository(),
                 $this->filledTrancheRepository(),
                 $this->filledInvestorRepository(),
@@ -45,7 +44,7 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([]),
+                [],
                 new InMemoryLoanRepository(),
                 new InMemoryTrancheRepository(),
                 new InMemoryInvestorRepository(),
@@ -63,11 +62,11 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([
+                [
                     'tranche_id' => 1,
                     'investor_id' => 1,
                     'amount' => 19856,
-                ]),
+                ],
                 new InMemoryLoanRepository(),
                 new InMemoryTrancheRepository(),
                 new InMemoryInvestorRepository(),
@@ -85,11 +84,11 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([
+                [
                     'tranche_id' => 1,
                     'investor_id' => 1,
                     'amount' => 19856,
-                ]),
+                ],
                 $this->filledLoanRepository(),
                 $this->filledTrancheRepository(),
                 new InMemoryInvestorRepository(),
@@ -107,11 +106,11 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([
+                [
                     'tranche_id' => 1,
                     'investor_id' => 1,
                     'amount' => 19856654654,
-                ]),
+                ],
                 $this->filledLoanRepository(),
                 $this->filledTrancheRepository(),
                 new InMemoryInvestorRepository(),
@@ -129,11 +128,11 @@ class ValidatedInvestInTrancheCommandTest extends TestCase
     {
         $command =
             new ValidatedInvestInTrancheCommand(
-                new FromArray([
+                [
                     'tranche_id' => 1,
                     'investor_id' => 1,
                     'amount' => 71235,
-                ]),
+                ],
                 $this->filledLoanRepository(),
                 $this->filledTrancheRepository(),
                 $this->filledInvestorRepository(),

@@ -17,9 +17,9 @@ use \DateTime;
 class ValidatedInvestInTrancheCommand
 {
     /**
-     * @var Request
+     * @var array
      */
-    private $request;
+    private $data;
 
     /**
      * @var LoanRepository
@@ -42,14 +42,14 @@ class ValidatedInvestInTrancheCommand
     private $currentDateTime;
 
     public function __construct(
-        Request $request,
+        array $data,
         LoanRepository $loanRepository,
         TrancheRepository $trancheRepository,
         InvestorRepository $investorRepository,
         DateTime $currentDateTime
     )
     {
-        $this->request = $request;
+        $this->data = $data;
         $this->loanRepository = $loanRepository;
         $this->trancheRepository = $trancheRepository;
         $this->investorRepository = $investorRepository;
@@ -91,13 +91,13 @@ class ValidatedInvestInTrancheCommand
     {
         $errors = [];
 
-        if (!isset($this->request->data()['tranche_id'])) {
+        if (!isset($this->data['tranche_id'])) {
             $errors[] = 'tranche_id is required.';
         }
-        if (!isset($this->request->data()['investor_id'])) {
+        if (!isset($this->data['investor_id'])) {
             $errors[] = 'investor_id is required.';
         }
-        if (!isset($this->request->data()['amount'])) {
+        if (!isset($this->data['amount'])) {
             $errors[] = 'amount is required.';
         }
 
@@ -118,7 +118,7 @@ class ValidatedInvestInTrancheCommand
         return
             !$tranche->canAccept(
                 new InMinorUnits(
-                    $this->request->data()['amount'],
+                    $this->data['amount'],
                     new Pound()
                 )
             );
@@ -129,7 +129,7 @@ class ValidatedInvestInTrancheCommand
         return
             $this->trancheRepository
                 ->byId(
-                    new TrancheId($this->request->data()['tranche_id'])
+                    new TrancheId($this->data['tranche_id'])
                 )
             ;
     }
@@ -140,7 +140,7 @@ class ValidatedInvestInTrancheCommand
             $this->investorRepository
                 ->byId(
                     new InvestorId(
-                        $this->request->data()['investor_id']
+                        $this->data['investor_id']
                     )
                 )
             ;
@@ -150,7 +150,7 @@ class ValidatedInvestInTrancheCommand
     {
         return
             new InMinorUnits(
-                $this->request->data()['amount'],
+                $this->data['amount'],
                 new Pound()
             );
     }
