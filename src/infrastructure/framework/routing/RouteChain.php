@@ -4,7 +4,6 @@ namespace src\infrastructure\framework\routing;
 
 use src\useCases\Action;
 use src\useCases\Request;
-use src\useCases\Response;
 
 class RouteChain implements Action
 {

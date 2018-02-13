@@ -1,6 +1,6 @@
 <?php
 
-namespace src\infrastructure\application\tranche;
+namespace src\infrastructure\domain\tranche;
 
 use src\domain\tranche\NonExistentTranche;
 use src\domain\tranche\Tranche;

@@ -11,7 +11,7 @@ use src\domain\percentage\format\DefaultPercent;
 use src\domain\percentage\Percentage;
 use src\domain\tranche\DefaultTranche;
 use src\domain\tranche\TrancheId;
-use src\infrastructure\application\tranche\InMemoryTrancheRepository;
+use src\infrastructure\domain\tranche\InMemoryTrancheRepository;
 use \DateTime;
 
 class InMemoryTrancheRepositoryTest extends TestCase

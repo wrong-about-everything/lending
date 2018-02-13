@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use src\domain\loan\DefaultLoan;
 use src\domain\loan\LoanId;
 use src\domain\loan\LoanInterval;
-use src\infrastructure\application\loan\InMemoryLoanRepository;
+use src\infrastructure\domain\loan\InMemoryLoanRepository;
 use \DateTime;
 
 class InMemoryLoanRepositoryTest extends TestCase

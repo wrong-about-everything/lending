@@ -1,6 +1,6 @@
 <?php
 
-namespace src\infrastructure\application\investor;
+namespace src\infrastructure\domain\investor;
 
 use src\domain\investor\Investor;
 use src\domain\investor\InvestorId;

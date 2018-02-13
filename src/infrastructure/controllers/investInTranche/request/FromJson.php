@@ -1,9 +1,10 @@
 <?php
 
-namespace src\useCases\investInTranche\request;
+namespace src\infrastructure\controllers\investInTranche\request;
 
 use src\useCases\Request;
 use src\useCases\UseCase;
+use \Closure;
 
 class FromJson implements Action
 {
@@ -12,9 +13,15 @@ class FromJson implements Action
      */
     private $origin;
 
-    public function __construct(UseCase $origin)
+    /**
+     * @var Closure
+     */
+    private $to;
+
+    public function __construct(UseCase $origin, Closure /* (array) => Response */ $to)
     {
         $this->origin = $origin;
+        $this->to = $to;
     }
 
     /**
@@ -24,7 +31,7 @@ class FromJson implements Action
     public function act(Request $request)
     {
         return
-            WithBodyAsArray(
+            ($this->to)(
                 $this->origin
                     ->act(
                         is_null($data = json_decode($request->body(), true))

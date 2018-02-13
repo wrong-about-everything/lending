@@ -7,7 +7,7 @@ use src\domain\investor\DefaultInvestor;
 use src\domain\investor\InvestorId;
 use src\domain\money\currency\Pound;
 use src\domain\money\format\InMinorUnits;
-use src\infrastructure\application\investor\InMemoryInvestorRepository;
+use src\infrastructure\domain\investor\InMemoryInvestorRepository;
 
 class InMemoryInvestorRepositoryTest extends TestCase
 {

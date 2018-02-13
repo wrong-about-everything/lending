@@ -13,9 +13,9 @@ use src\domain\money\format\InMinorUnits;
 use src\domain\percentage\format\DefaultPercent;
 use src\domain\tranche\DefaultTranche;
 use src\domain\tranche\TrancheId;
-use src\infrastructure\application\investor\InMemoryInvestorRepository;
-use src\infrastructure\application\loan\InMemoryLoanRepository;
-use src\infrastructure\application\tranche\InMemoryTrancheRepository;
+use src\infrastructure\domain\investor\InMemoryInvestorRepository;
+use src\infrastructure\domain\loan\InMemoryLoanRepository;
+use src\infrastructure\domain\tranche\InMemoryTrancheRepository;
 use src\useCases\investInTranche\command\ValidatedInvestInTrancheCommand;
 use \DateTime;
 

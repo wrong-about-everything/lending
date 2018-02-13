@@ -1,6 +1,6 @@
 <?php
 
-namespace src\useCases\investInTranche\response;
+namespace src\infrastructure\controllers\investInTranche\response;
 
 use src\useCases\Action;
 use src\useCases\Request;
@@ -8,11 +8,11 @@ use src\useCases\Response;
 
 class ToXml extends Response
 {
-    private $origin;
+    private $data;
 
-    public function __construct(Action $action)
+    public function __construct(array $data)
     {
-        $this->origin = $action;
+        $this->data = $data;
     }
 
     protected function code()
@@ -28,8 +28,9 @@ class ToXml extends Response
     protected function body()
     {
         $xml = new SimpleXMLElement('<xml/>');
-        $response = $this->origin->act($request);
+        $response = $this->data;
         $xml->addChild('investor', $response['investor_id']);
 
+        return WithBody($xml);
     }
 }
