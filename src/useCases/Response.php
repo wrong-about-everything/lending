@@ -5,16 +5,6 @@ namespace src\useCases;
 abstract class Response
 {
     /**
-     * @var Response
-     */
-    private $origin;
-
-    public function __construct(Response $response)
-    {
-        $this->origin = $response;
-    }
-
-    /**
      * @return Code
      */
     abstract protected function code();

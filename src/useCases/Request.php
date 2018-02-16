@@ -2,10 +2,13 @@
 
 namespace src\useCases;
 
+use src\infrastructure\framework\http\request\HttpMethod;
+use src\infrastructure\framework\http\request\Uri;
+
 interface Request
 {
     /**
-     * @return Method
+     * @return HttpMethod
      */
     public function method();
 
@@ -15,7 +18,7 @@ interface Request
     public function uri();
 
     /**
-     * @return string[]
+     * @return Header[]
      */
     public function headers();
 

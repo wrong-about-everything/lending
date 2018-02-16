@@ -1,8 +1,6 @@
 <?php
 
 require_once 'autoload.php';
-require_once 'vendor/autoload.php';
-require_once 'errorHandler.php';
 
 use \src\useCases\investInTranche\InvestInTranche;
 use src\infrastructure\domain\loan\InMemoryLoanRepository;
@@ -11,33 +9,101 @@ use src\infrastructure\domain\investor\InMemoryInvestorRepository;
 use src\infrastructure\controllers\investInTranche\request\FromJson;
 use src\infrastructure\controllers\investInTranche\response\ToXml;
 use \src\infrastructure\framework\routing\Route;
+use \src\infrastructure\framework\front\WebFront;
+use \src\infrastructure\framework\http\request\HttpMethod;
+use \src\infrastructure\framework\http\request\HttpRequestStub;
+use \src\infrastructure\framework\http\request\Uri;
+use \src\infrastructure\framework\routing\resourceLocation\WithPlaceholders;
+use \src\domain\tranche\DefaultTranche;
+use \src\domain\tranche\TrancheId;
+use \src\domain\loan\LoanId;
+use \src\domain\money\currency\Pound;
+use \src\domain\money\format\InMinorUnits;
+use \src\domain\percentage\format\DefaultPercent;
+use \src\infrastructure\framework\http\request\ReceivedHttpRequest;
+use \src\domain\loan\DefaultLoan;
+use \src\domain\loan\LoanInterval;
+use \src\domain\investor\DefaultInvestor;
+use \src\domain\investor\InvestorId;
+use \src\infrastructure\framework\routing\RouteChain;
 
-(new WebFront(
-    new WithDateHeader(
-        new Fallback(
-            new RouteChain(
-                [
-                    new Route(
-                        new WithPlaceholders('/investors/:id/invest'),
-                        new Post(),
-                        new FromJson(
-                            new InvestInTranche(
-                                new InMemoryLoanRepository(),
-                                new InMemoryTrancheRepository(),
-                                new InMemoryInvestorRepository(),
-                                new DateTime('now')
-                            ),
-                            function (array $data) {
-                                return new ToXml($data);
-                            }
-                        )
-                    ),
-                ],
-                new UrlNotFoundResponse()
-            ),
-            json_encode(['code' => 'exception', 'System failure. Come back later.'])
-        ),
-        new DateTime('now')
+$trancheRepository = new InMemoryTrancheRepository();
+$trancheRepository->add(
+    new DefaultTranche(
+        new TrancheId(1), new LoanId(1), new InMinorUnits(0, new Pound()), new InMinorUnits(1000000, new Pound()), new DefaultPercent(7)
     )
-))
-    ->respond();
+);
+
+$loanRepository = new InMemoryLoanRepository();
+$loanRepository->add(
+    new DefaultLoan(
+        new LoanId(1), new LoanInterval(new DateTime('2018-02-01'), new DateTime('2018-02-28'))
+    )
+);
+
+$investorRepository = new InMemoryInvestorRepository();
+$investorRepository->add(
+    new DefaultInvestor(
+        new InvestorId(1), new InMinorUnits(1000, new Pound())
+    )
+);
+
+try {
+    var_dump(
+        (new RouteChain(
+            [
+                new Route(
+                    new WithPlaceholders('/investors/:id/invest'),
+                    new HttpMethod($_SERVER['REQUEST_METHOD']),
+                    new FromJson(
+                        new InvestInTranche(
+                            $loanRepository,
+                            $trancheRepository,
+                            $investorRepository,
+                            new DateTime('now')
+                        ),
+                        function (array $data) {
+                            return new ToXml($data);
+                        }
+                    )
+                )
+            ]
+        ))
+            ->act(
+                new ReceivedHttpRequest()
+            )
+    );
+} catch (Exception $e) {
+    var_dump($e->getMessage());
+    var_dump($e->getTraceAsString());
+}
+
+//(new WebFront(
+//    new WithDateHeader(
+//        new Fallback(
+//            new RouteChain(
+//                [
+//                    new Route(
+//                        new WithPlaceholders('/investors/:id/invest'),
+//                        new Post(),
+//                        new FromJson(
+//                            new InvestInTranche(
+//                                new InMemoryLoanRepository(),
+//                                new InMemoryTrancheRepository(),
+//                                new InMemoryInvestorRepository(),
+//                                new DateTime('now')
+//                            ),
+//                            function (array $data) {
+//                                return new ToXml($data);
+//                            }
+//                        )
+//                    ),
+//                ],
+//                new UrlNotFoundResponse()
+//            ),
+//            json_encode(['code' => 'exception', 'System failure. Come back later.'])
+//        ),
+//        new DateTime('now')
+//    )
+//))
+//    ->respond();

@@ -2,6 +2,7 @@
 
 namespace src\infrastructure\controllers\investInTranche\request;
 
+use src\useCases\Action;
 use src\useCases\Request;
 use src\useCases\UseCase;
 use \Closure;
