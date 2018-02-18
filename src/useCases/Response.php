@@ -2,6 +2,9 @@
 
 namespace src\useCases;
 
+use src\infrastructure\framework\http\response\Code;
+use src\infrastructure\framework\http\response\Header;
+
 abstract class Response
 {
     /**
@@ -19,6 +22,11 @@ abstract class Response
      */
     abstract protected function body();
 
+    final public function isResourceFound()
+    {
+        return !$this->code()->isNotFound();
+    }
+
     final public function display()
     {
         http_response_code($this->code()->value());
@@ -30,6 +38,6 @@ abstract class Response
             }
         );
 
-        echo $this->body()->value();
+        echo $this->body();
     }
 }

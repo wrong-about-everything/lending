@@ -31,8 +31,9 @@ class FromJson implements Action
      */
     public function act(Request $request)
     {
+        $c = $this->to;
         return
-            ($this->to)(
+            $c(
                 $this->origin
                     ->act(
                         is_null($data = json_decode($request->body(), true))

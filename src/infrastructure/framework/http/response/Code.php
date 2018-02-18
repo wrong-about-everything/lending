@@ -81,10 +81,20 @@ abstract class Code
 
     public function __construct($code)
     {
-        if (!in_array($code. $this->codes)) {
+        if (!array_key_exists($code, $this->codes)) {
             throw new Exception('Invalid http response code');
         }
 
         $this->code = $code;
+    }
+
+    public function value()
+    {
+        return $this->code;
+    }
+
+    public function isNotFound()
+    {
+        return $this->code === 404;
     }
 }

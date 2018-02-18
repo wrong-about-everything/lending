@@ -2,6 +2,7 @@
 
 namespace src\infrastructure\framework\routing;
 
+use src\infrastructure\framework\http\response\ResourceNotFoundResponse;
 use src\useCases\Action;
 use src\useCases\Request;
 

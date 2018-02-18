@@ -7,7 +7,7 @@ use src\infrastructure\domain\loan\InMemoryLoanRepository;
 use src\infrastructure\domain\tranche\InMemoryTrancheRepository;
 use src\infrastructure\domain\investor\InMemoryInvestorRepository;
 use src\infrastructure\controllers\investInTranche\request\FromJson;
-use src\infrastructure\controllers\investInTranche\response\ToXml;
+use src\infrastructure\controllers\investInTranche\response\xml\InvestedSuccessfully;
 use \src\infrastructure\framework\routing\Route;
 use \src\infrastructure\framework\front\WebFront;
 use \src\infrastructure\framework\http\request\HttpMethod;
@@ -26,6 +26,11 @@ use \src\domain\loan\LoanInterval;
 use \src\domain\investor\DefaultInvestor;
 use \src\domain\investor\InvestorId;
 use \src\infrastructure\framework\routing\RouteChain;
+use \src\infrastructure\framework\fallback\Fallback;
+use \src\infrastructure\framework\fallback\SystemFailure;
+use \src\infrastructure\framework\http\response\header\WithHeaders;
+use \src\domain\language\En;
+use \src\infrastructure\framework\http\response\header\ContentLanguage;
 
 $trancheRepository = new InMemoryTrancheRepository();
 $trancheRepository->add(
@@ -49,30 +54,36 @@ $investorRepository->add(
 );
 
 try {
-    var_dump(
-        (new RouteChain(
-            [
-                new Route(
-                    new WithPlaceholders('/investors/:id/invest'),
-                    new HttpMethod($_SERVER['REQUEST_METHOD']),
-                    new FromJson(
-                        new InvestInTranche(
-                            $loanRepository,
-                            $trancheRepository,
-                            $investorRepository,
-                            new DateTime('now')
-                        ),
-                        function (array $data) {
-                            return new ToXml($data);
-                        }
+    (new WithHeaders(
+        new Fallback(
+            new RouteChain(
+                [
+                    new Route(
+                        new WithPlaceholders('/investors/:id/invest'),
+                        new HttpMethod($_SERVER['REQUEST_METHOD']),
+                        new FromJson(
+                            new InvestInTranche(
+                                $loanRepository,
+                                $trancheRepository,
+                                $investorRepository,
+                                new DateTime('now')
+                            ),
+                            function (array $data) {
+                                return new InvestedSuccessfully($data);
+                            }
+                        )
                     )
-                )
-            ]
-        ))
-            ->act(
-                new ReceivedHttpRequest()
-            )
-    );
+                ]
+            ),
+            new SystemFailure()
+        ),
+        [new ContentLanguage([new En()])]
+    ))
+        ->act(
+            new ReceivedHttpRequest()
+        )
+            ->display()
+        ;
 } catch (Exception $e) {
     var_dump($e->getMessage());
     var_dump($e->getTraceAsString());
