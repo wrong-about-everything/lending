@@ -3,7 +3,7 @@
 namespace src\infrastructure\framework\routing;
 
 use src\infrastructure\framework\http\request\HttpMethod;
-use src\infrastructure\framework\http\response\ResourceNotFoundResponse;
+use src\infrastructure\framework\routing\ResourceNotFoundResponse;
 use src\useCases\Action;
 use src\useCases\Request;
 

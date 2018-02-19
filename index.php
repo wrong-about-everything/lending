@@ -28,9 +28,10 @@ use \src\domain\investor\InvestorId;
 use \src\infrastructure\framework\routing\RouteChain;
 use \src\infrastructure\framework\fallback\Fallback;
 use \src\infrastructure\framework\fallback\SystemFailure;
-use \src\infrastructure\framework\http\response\header\WithHeaders;
+use src\infrastructure\framework\WithHeaders;
 use \src\domain\language\En;
 use \src\infrastructure\framework\http\response\header\ContentLanguage;
+use \src\infrastructure\framework\http\response\header\DateHeader;
 
 $trancheRepository = new InMemoryTrancheRepository();
 $trancheRepository->add(
@@ -77,13 +78,13 @@ try {
             ),
             new SystemFailure()
         ),
-        [new ContentLanguage([new En()])]
+        [new ContentLanguage([new En()]), new DateHeader(new DateTime('now'))]
     ))
         ->act(
             new ReceivedHttpRequest()
         )
             ->display()
-        ;
+    ;
 } catch (Exception $e) {
     var_dump($e->getMessage());
     var_dump($e->getTraceAsString());

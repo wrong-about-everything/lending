@@ -3,7 +3,7 @@
 namespace src\infrastructure\controllers\investInTranche\response\xml;
 
 use src\infrastructure\framework\http\response\code\SuccessCode;
-use src\infrastructure\framework\http\response\Header;
+use src\infrastructure\framework\http\response\header\XmlContentType;
 use src\useCases\Response;
 
 class InvestedSuccessfully extends Response
@@ -22,16 +22,7 @@ class InvestedSuccessfully extends Response
 
     protected function headers()
     {
-        return
-            [
-                new class implements Header
-                {
-                    public function value()
-                    {
-                        return 'Content-Type: text/xml';
-                    }
-                }
-            ];
+        return [new XmlContentType()];
     }
 
     protected function body()

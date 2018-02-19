@@ -1,8 +1,10 @@
 <?php
 
-namespace src\infrastructure\framework\http\response;
+namespace src\infrastructure\framework\routing;
 
+use src\infrastructure\framework\http\response\Body;
 use src\infrastructure\framework\http\response\code\NotFound;
+use src\infrastructure\framework\http\response\Header;
 use src\useCases\Response;
 
 class ResourceNotFoundResponse extends Response

@@ -39,5 +39,7 @@ abstract class Response
         );
 
         echo $this->body();
+
+        die();
     }
 }

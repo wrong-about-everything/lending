@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d719fe96-e1c8-465f-9d17-9fd5a5a55db5" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/ToXml.php" afterPath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lending.iml" afterPath="$PROJECT_DIR$/.idea/lending.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/infrastructure/framework/http/response/ResourceNotFoundResponse.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/routing/ResourceNotFoundResponse.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/infrastructure/framework/http/response/WithDateHeader.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/DateHeader.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithHeaders.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/WithHeaders.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithXmlContentType.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/XmlContentType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/request/FromJson.php" afterPath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/request/FromJson.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/infrastructure/framework/http/response/Code.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/http/response/Code.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php" afterPath="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/infrastructure/framework/routing/Route.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/routing/Route.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/infrastructure/framework/routing/RouteChain.php" afterPath="$PROJECT_DIR$/src/infrastructure/framework/routing/RouteChain.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/useCases/Response.php" afterPath="$PROJECT_DIR$/src/useCases/Response.php" />
     </list>
@@ -33,8 +35,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="923">
+              <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
               <folding>
                 <element signature="e#37#87#0#PHP" expanded="true" />
               </folding>
@@ -42,12 +44,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WithXmlContentType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithXmlContentType.php">
+      <file leaf-file-name="WithHeaders.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/WithHeaders.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-              <folding />
+            <state relative-caret-position="135">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding>
+                <element signature="e#48#102#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SystemFailure.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/fallback/SystemFailure.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+              <folding>
+                <element signature="e#57#128#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceNotFoundResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/routing/ResourceNotFoundResponse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding>
+                <element signature="e#56#108#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateHeader.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/DateHeader.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#69#123#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,8 +95,8 @@
       <file leaf-file-name="InvestedSuccessfully.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="360">
+              <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding>
                 <element signature="e#79#143#0#PHP" expanded="true" />
               </folding>
@@ -64,25 +104,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/useCases/Response.php">
+      <file leaf-file-name="XmlContentType.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/XmlContentType.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-              <folding>
-                <element signature="e#32#84#0#PHP" expanded="true" />
-              </folding>
+              <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WithHeaders.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithHeaders.php">
+      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/useCases/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="600">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
-                <element signature="e#69#93#0#PHP" expanded="true" />
+                <element signature="e#32#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,11 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/useCases/investInTranche/InvestInTranche.php" />
-        <option value="$PROJECT_DIR$/src/useCases/investInTranche/command/ValidatedInvestInTrancheCommand.php" />
-        <option value="$PROJECT_DIR$/test/useCases/investInTranche/command/ValidatedInvestInTrancheCommandTest.php" />
-        <option value="$PROJECT_DIR$/test/useCases/investInTranche/FailedInvestInTrancheTest.php" />
-        <option value="$PROJECT_DIR$/src/infrastructure/application/investor/InMemoryInvestorRepository.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/application/loan/InMemoryLoanRepository.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/application/tranche/InMemoryTrancheRepository.php" />
         <option value="$PROJECT_DIR$/src/useCases/Action.php" />
@@ -148,14 +181,19 @@
         <option value="$PROJECT_DIR$/src/domain/language/Language.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/Code.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithContentLanguages.php" />
-        <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithXmlContentType.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/Header.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/ContentLanguage.php" />
-        <option value="$PROJECT_DIR$/src/useCases/Response.php" />
-        <option value="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithHeader.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/routing/ResourceNotFoundResponse.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithXmlContentType.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithDateHeader.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/DateHeader.php" />
         <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithHeaders.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php" />
+        <option value="$PROJECT_DIR$/src/useCases/Response.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/WithHeaders.php" />
+        <option value="$PROJECT_DIR$/src/infrastructure/framework/http/response/header/XmlContentType.php" />
       </list>
     </option>
   </component>
@@ -171,9 +209,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -249,7 +287,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -537,12 +574,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.behat" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/infrastructure/framework/fallback" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/infrastructure/framework" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
@@ -642,15 +680,17 @@
       <workItem from="1518542171355" duration="20644000" />
       <workItem from="1518893052032" duration="599000" />
       <workItem from="1518948462748" duration="3125000" />
-      <workItem from="1518956905791" duration="15830000" />
+      <workItem from="1518956905791" duration="15853000" />
+      <workItem from="1519024134822" duration="3889000" />
+      <workItem from="1519028639457" duration="114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92442000" />
+    <option name="totallyTimeSpent" value="96468000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -659,18 +699,18 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,13 +734,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/domain/investment/Investment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/useCases/investInTranche/SuccessfulInvestInTrancheTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -757,14 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/front/WebFront.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,16 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/ResourceNotFoundResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding>
-            <element signature="e#62#123#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/request/FromJson.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -894,7 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,9 +924,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#56#128#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,27 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/routing/Route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#56#113#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/fallback/SystemFailure.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding>
-            <element signature="e#57#128#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -966,7 +957,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -974,7 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -982,14 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/Header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1012,59 +993,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/WithDateHeader.php">
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/front/WebFront.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        <state relative-caret-position="300">
+          <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php">
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/tests/_files/Book.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/Header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/routing/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#79#143#0#PHP" expanded="true" />
+            <element signature="e#56#113#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="923">
+          <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
           <folding>
             <element signature="e#37#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithXmlContentType.php">
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/fallback/SystemFailure.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="90">
+          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="e#57#128#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/routing/ResourceNotFoundResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <element signature="e#56#108#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/DateHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#69#123#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/useCases/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="600">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="e#32#84#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/WithHeaders.php">
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/WithHeaders.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
-            <element signature="e#69#93#0#PHP" expanded="true" />
+            <element signature="e#48#102#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/controllers/investInTranche/response/xml/InvestedSuccessfully.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="e#79#143#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infrastructure/framework/http/response/header/XmlContentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>

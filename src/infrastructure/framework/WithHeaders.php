@@ -1,7 +1,8 @@
 <?php
 
-namespace src\infrastructure\framework\http\response\header;
+namespace src\infrastructure\framework;
 
+use src\infrastructure\framework\http\response\Header;
 use src\useCases\Action;
 use src\useCases\Request;
 use src\useCases\Response;
