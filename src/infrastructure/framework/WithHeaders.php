@@ -2,6 +2,7 @@
 
 namespace src\infrastructure\framework;
 
+use src\infrastructure\framework\http\response\Code;
 use src\infrastructure\framework\http\response\Header;
 use src\useCases\Action;
 use src\useCases\Request;
@@ -25,7 +26,7 @@ class WithHeaders implements Action
         $this->headers = $headers;
     }
 
-    public function act(Request $request)
+    public function act(Request $request): Response
     {
         return
             new class($this->action->act($request), $this->headers) extends Response
@@ -43,12 +44,12 @@ class WithHeaders implements Action
                     $this->headers = $headers;
                 }
 
-                protected function code()
+                protected function code(): Code
                 {
                     return $this->origin->code();
                 }
 
-                protected function headers()
+                protected function headers(): array
                 {
                     return
                         array_merge(
@@ -57,7 +58,7 @@ class WithHeaders implements Action
                         );
                 }
 
-                protected function body()
+                protected function body(): string
                 {
                     return $this->origin->body();
                 }

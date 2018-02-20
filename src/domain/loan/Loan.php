@@ -7,17 +7,14 @@ use \DateTime;
 
 interface Loan
 {
-    /**
-     * @return bool
-     */
-    public function exists();
+    public function exists(): bool;
 
     /**
      * @return LoanId
      *
      * @throws Exception If current loan does not exist.
      */
-    public function id();
+    public function id(): LoanId;
 
     /**
      * @param $now DateTime Current datetime.
@@ -25,5 +22,5 @@ interface Loan
      *
      * @throws Exception If current loan does not exist.
      */
-    public function isClosed(DateTime $now);
+    public function isClosed(DateTime $now): bool;
 }

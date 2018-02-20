@@ -2,17 +2,16 @@
 
 namespace src\infrastructure\framework\http\request;
 
-use \src\infrastructure\framework\http\request\Uri;
 use src\useCases\Request;
 
 class ReceivedHttpRequest implements Request
 {
-    public function method()
+    public function method(): HttpMethod
     {
         return new HttpMethod($_SERVER['REQUEST_METHOD']);
     }
 
-    public function uri()
+    public function uri(): Uri
     {
         return
             new Uri(
@@ -25,12 +24,12 @@ class ReceivedHttpRequest implements Request
             );
     }
 
-    public function headers()
+    public function headers(): array
     {
         return getallheaders();
     }
 
-    public function body()
+    public function body(): string
     {
         return file_get_contents('php://input');
     }

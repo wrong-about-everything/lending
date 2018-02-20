@@ -6,6 +6,7 @@ use src\infrastructure\framework\http\request\HttpMethod;
 use src\infrastructure\framework\routing\ResourceNotFoundResponse;
 use src\useCases\Action;
 use src\useCases\Request;
+use src\useCases\Response;
 
 class Route implements Action
 {
@@ -20,7 +21,7 @@ class Route implements Action
         $this->action = $action;
     }
 
-    public function act(Request $request)
+    public function act(Request $request): Response
     {
         if ($this->method->isEqualTo($request->method()) && $this->location->matches($request)) {
             return $this->action->act($request);

@@ -12,5 +12,5 @@ interface UseCase
      *
      * @throws Exception
      */
-    public function act(array $data);
+    public function act(array $data): array;
 }

@@ -7,23 +7,14 @@ use src\infrastructure\framework\http\request\Uri;
 
 interface Request
 {
-    /**
-     * @return HttpMethod
-     */
-    public function method();
+    public function method(): HttpMethod;
 
-    /**
-     * @return Uri
-     */
-    public function uri();
+    public function uri(): Uri;
 
     /**
      * @return Header[]
      */
-    public function headers();
+    public function headers(): array;
 
-    /**
-     * @return string
-     */
-    public function body();
+    public function body(): string;
 }

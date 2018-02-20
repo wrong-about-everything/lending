@@ -45,7 +45,7 @@ class InvestInTranche implements UseCase
         $this->currentDateTime = $currentDateTime;
     }
 
-    public function act(array $data)
+    public function act(array $data): array
     {
         $validationResult =
             (new ValidatedInvestInTrancheCommand(

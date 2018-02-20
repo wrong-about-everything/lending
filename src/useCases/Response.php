@@ -7,22 +7,19 @@ use src\infrastructure\framework\http\response\Header;
 
 abstract class Response
 {
-    /**
-     * @return Code
-     */
-    abstract protected function code();
+    abstract protected function code(): Code;
 
     /**
      * @return Header[]
      */
-    abstract protected function headers();
+    abstract protected function headers(): array;
 
     /**
      * @return Body
      */
-    abstract protected function body();
+    abstract protected function body(): string;
 
-    final public function isResourceFound()
+    final public function isResourceFound(): bool
     {
         return !$this->code()->isNotFound();
     }

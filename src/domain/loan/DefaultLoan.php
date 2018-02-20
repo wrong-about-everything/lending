@@ -22,17 +22,17 @@ class DefaultLoan implements Loan
         $this->interval = $interval;
     }
 
-    public function exists()
+    public function exists(): bool
     {
         return true;
     }
 
-    public function id()
+    public function id(): LoanId
     {
         return $this->id;
     }
 
-    public function isClosed(DateTime $now)
+    public function isClosed(DateTime $now): bool
     {
         return $this->interval->isClosed($now);
     }

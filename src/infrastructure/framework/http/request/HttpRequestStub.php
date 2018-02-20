@@ -19,22 +19,22 @@ class HttpRequestStub implements Request
         $this->body = $body;
     }
 
-    public function method()
+    public function method(): HttpMethod
     {
         return $this->method;
     }
 
-    public function uri()
+    public function uri(): Uri
     {
         return $this->uri;
     }
 
-    public function headers()
+    public function headers(): array
     {
         return $this->headers;
     }
 
-    public function body()
+    public function body(): string
     {
         return $this->body;
     }

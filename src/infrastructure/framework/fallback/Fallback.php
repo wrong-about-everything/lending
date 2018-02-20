@@ -18,7 +18,7 @@ class Fallback implements Action
         $this->response = $response;
     }
 
-    public function act(Request $request)
+    public function act(Request $request): Response
     {
         try {
             return $this->action->act($request);

@@ -8,5 +8,5 @@ interface Action
      * @param Request $request
      * @return Response
      */
-    public function act(Request $request);
+    public function act(Request $request): Response;
 }
