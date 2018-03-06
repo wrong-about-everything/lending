@@ -7,7 +7,7 @@ use src\infrastructure\framework\http\response\code\SuccessCode;
 use src\infrastructure\framework\http\response\header\XmlContentType;
 use src\useCases\Response;
 
-class InvestedSuccessfully extends Response
+class InvestInTrancheResponse extends Response
 {
     private $data;
 
@@ -28,6 +28,12 @@ class InvestedSuccessfully extends Response
 
     protected function body(): string
     {
-        return '<response code="' . $this->data['code'] . '"></response>';
+        if (isset($this->data[0])) {
+            $message = ' message="' . $this->data[0] . '" ';
+        } else {
+            $message = null;
+        }
+
+        return '<response code="' . $this->data['code'] . '"' . ($message ?? '') . '></response>';
     }
 }

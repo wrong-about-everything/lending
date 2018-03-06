@@ -6,7 +6,7 @@ use src\infrastructure\framework\http\response\Code;
 
 class NotFound extends Code
 {
-    public function __construct($code)
+    public function __construct()
     {
         parent::__construct(404);
     }

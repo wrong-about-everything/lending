@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 require_once 'autoload.php';
 
 use \src\useCases\investInTranche\InvestInTranche;
@@ -7,7 +9,7 @@ use src\infrastructure\domain\loan\InMemoryLoanRepository;
 use src\infrastructure\domain\tranche\InMemoryTrancheRepository;
 use src\infrastructure\domain\investor\InMemoryInvestorRepository;
 use src\infrastructure\controllers\investInTranche\request\FromJson;
-use src\infrastructure\controllers\investInTranche\response\xml\InvestedSuccessfully;
+use src\infrastructure\controllers\investInTranche\response\xml\InvestInTrancheResponse;
 use \src\infrastructure\framework\routing\Route;
 use \src\infrastructure\framework\front\WebFront;
 use \src\infrastructure\framework\http\request\HttpMethod;
@@ -70,7 +72,7 @@ try {
                                 new DateTime('now')
                             ),
                             function (array $data) {
-                                return new InvestedSuccessfully($data);
+                                return new InvestInTrancheResponse($data);
                             }
                         )
                     )
